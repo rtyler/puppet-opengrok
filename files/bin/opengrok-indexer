@@ -1,0 +1,11 @@
+#!/bin/sh
+
+BASE_DIR=/var/opengrok
+
+java -jar ${BASE_DIR}/bin/opengrok.jar \
+          -W ${BASE_DIR}/etc/configuration.xml \
+          -P \
+          -S \
+          -v \
+          -s ${BASE_DIR}/source \
+          -d ${BASE_DIR}/data
