@@ -1,0 +1,9 @@
+#!/bin/bash
+
+BASE_DIR=/var/opengrok/source
+
+for d in ${BASE_DIR}/*; do
+  (cd $d && if [ -d .git ]; then git pull --rebase; fi)
+done
+
+/var/opengrok/bin/opengrok-indexer

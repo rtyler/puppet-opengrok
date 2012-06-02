@@ -14,6 +14,10 @@ class opengrok::files {
       ensure  => present,
       source  => 'puppet:///modules/opengrok/bin/opengrok-indexer';
 
+    "${bin_path}/opengrok-update" :
+      ensure  => present,
+      source  => 'puppet:///modules/opengrok/bin/opengrok-update';
+
     "${bin_path}/lib/ant.jar" :
       ensure  => present,
       source  => 'puppet:///modules/opengrok/bin/lib/ant.jar';

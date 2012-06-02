@@ -21,4 +21,11 @@ class opengrok {
       notify      => Service['tomcat6'],
       require     => File['/var/opengrok/bin/opengrok-indexer'];
   }
+
+  cron {
+    'update-opengrok-repos' :
+      command => '/var/opengrok/bin/opengrok-update',
+      user    => root,
+      minute  => '*/10',
+  }
 }
