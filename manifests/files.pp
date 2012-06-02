@@ -10,6 +10,9 @@ class opengrok::files {
       ensure  => present,
       source  => 'puppet:///modules/opengrok/bin/opengrok.jar';
 
+    "${bin_path}/opengrok-indexer" :
+      ensure  => present,
+      source  => 'puppet:///modules/opengrok/bin/opengrok-indexer';
 
     "${bin_path}/lib/ant.jar" :
       ensure  => present,
@@ -34,5 +37,6 @@ class opengrok::files {
     "${bin_path}/lib/swing-layout-0.9.jar" :
       ensure  => present,
       source  => 'puppet:///modules/opengrok/bin/lib/swing-layout-0.9.jar';
+
   }
 }

@@ -1,13 +1,17 @@
 class opengrok::dirs {
-  file {
-    '/var/opengrok' :
-      ensure => directory;
-    ['/var/opengrok/bin', '/var/opengrok/data', '/var/opengrok/source'] :
-      ensure  => directory,
-      require => File['/var/opengrok'];
+  $base_path = '/var/opengrok'
 
-    '/var/opengrok/bin/lib' :
+  file {
+    $base_path :
+      ensure => directory;
+
+    ["${base_path}/bin", "${base_path}/data",
+    "${base_path}/source", "${base_path}/etc"] :
       ensure  => directory,
-      require => File['/var/opengrok/bin'];
+      require => File[$base_path];
+
+    "${base_path}/bin/lib" :
+      ensure  => directory,
+      require => File["${base_path}/bin"];
   }
 }

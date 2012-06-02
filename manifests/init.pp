@@ -1,8 +1,6 @@
 class opengrok {
   package {
-    ['tomcat6', 'tomcat6-admin'] :
-      ensure => present;
-    'exuberant-ctags' :
+    ['exuberant-ctags', 'git-core'] :
       ensure => present;
   }
 
@@ -10,5 +8,7 @@ class opengrok {
     'opengrok::dirs' : ;
     'opengrok::files' :
       require => Class['opengrok::dirs'];
+    'opengrok::tomcat' :
+      require => Class['opengrok::files'];
   }
 }
