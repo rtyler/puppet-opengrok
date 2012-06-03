@@ -9,6 +9,8 @@ define opengrok::repo($git_url) {
       notify  => [
         Service['tomcat6'],
         Exec['opengrok-reindex']],
-      require => File[$opengrok::dirs::base_path];
+      require => [
+        File[$opengrok::dirs::base_path],
+        Package['git-core']];
   }
 }
